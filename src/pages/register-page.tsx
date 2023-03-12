@@ -9,13 +9,17 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import YupPassword from 'yup-password';
 YupPassword(yup) // extend yup
+import toast from "react-hot-toast";
+import { registerUser } from "../services/auth.service";
+
+
 
 function Copyright(props: any) {
   return (
@@ -36,6 +40,9 @@ function Copyright(props: any) {
 }
 
 export default function RegisterPages() {
+
+ const navigate = useNavigate();
+
   const schema = yup.object().shape({
     fullName: yup.string().required('ป้อนชื่อ-สกุลของคุณ'),
     email: yup.string().required('ป้อนอีเมล').email('รูปแบบอีเมลไม่ถูกต้อง'),
@@ -53,7 +60,26 @@ export default function RegisterPages() {
     resolver: yupResolver(schema),
     mode:"all",
   });
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = async(data: FormData) =>{
+     console.log(data);
+     try {
+        const userCredential = await registerUser(data.fullName,data.email,data.password!);
+        if(userCredential.user != null){
+          toast.success("ลงทะเบียนสำเร็จ");
+          navigate('/');
+          
+        }
+
+     } catch (error:any) {
+       if(error.code === "auth/email-already-in-use"){
+         toast.error("มีผู้ใช้งานนี้แล้วในระบบ");
+       }
+       else {
+        toast.error(error.message);
+       }
+       
+     }
+    };
 
   return (
     <>
