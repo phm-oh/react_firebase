@@ -152,8 +152,7 @@ export default function RegisterPages() {
             <Grid container justifyContent="center" spacing={3}>
               <Grid item>
                 <Typography variant="body2" component={RouterLink} to="/">
-                  กลับหน้าหลัก
-                </Typography>
+d                </Typography>
               </Grid>
               <Grid item>
                 <Typography variant="body2" component={RouterLink} to="/login">
