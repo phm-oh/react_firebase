@@ -18,6 +18,7 @@ import YupPassword from 'yup-password';
 YupPassword(yup) // extend yup
 import toast from "react-hot-toast";
 import { registerUser } from "../services/auth.service";
+import LoadingButton from '@mui/lab/LoadingButton'; 
 
 
 
@@ -56,7 +57,7 @@ export default function RegisterPages() {
 
 
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors,isSubmitting } } = useForm<FormData>({
     resolver: yupResolver(schema),
     mode:"all",
   });
@@ -138,14 +139,16 @@ export default function RegisterPages() {
               </Grid>
               <Grid item xs={12}></Grid>
             </Grid>
-            <Button
+            <LoadingButton
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              loading={isSubmitting}
+              loadingIndicator="กำลังลงทะเบียน รอสักครู่..."
             >
               ลงทะเบียน
-            </Button>
+            </LoadingButton>
             <Grid container justifyContent="center" spacing={3}>
               <Grid item>
                 <Typography variant="body2" component={RouterLink} to="/">
