@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  UserCredential,
+} from "firebase/auth";
 import { firebaseApp } from "../configs/firebase";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 
@@ -30,4 +36,17 @@ export async function registerUser(
   } catch (error) {
     throw error;
   }
+}
+
+export async function login(email: string, password: string) : Promise<UserCredential>{
+  try {
+    return await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+export async function logout(): Promise<void>{
+    await signOut(auth);
 }

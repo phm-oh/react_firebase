@@ -64,7 +64,7 @@ export default function HomePage() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">เข้าสู่ระบบ</Button>
+              <Button variant="contained" component={RouterLink} to="/login">เข้าสู่ระบบ</Button>
               {/* <Link  href="/register">
                  <Button variant="outlined">ลงทะเบียน</Button>
               </Link>  */}

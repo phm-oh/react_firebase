@@ -19,6 +19,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './d-menu';
 import { Outlet } from 'react-router-dom';
+import AccountMenu from './d-account-menu';
 
 
 
@@ -124,11 +125,9 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            
+            <AccountMenu />
+
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
