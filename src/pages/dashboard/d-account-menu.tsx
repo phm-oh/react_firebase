@@ -45,7 +45,7 @@ export default function AccountMenu() {
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Typography sx={{ minWidth: 100 }}>
-          สวัสดีคุณ {account?.fullName}
+          สวัสดีคุณ {account?.fulltName}
           </Typography>
        
         <Tooltip title="Account settings">

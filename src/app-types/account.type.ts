@@ -1,6 +1,6 @@
 export interface Account {
   userId?: string;
-  fullName?: string;
+  fulltName?: string;
   photoUrl?: string;
   role?: string;
 }

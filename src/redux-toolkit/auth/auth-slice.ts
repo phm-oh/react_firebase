@@ -1,25 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Account } from "../../app-types/account.type";
 import { RootState } from "../store";
+import { getCurrentAccountThunk } from "./auth-thunk";
 
 
 export type AuthState = {
     isAuthLoading: boolean;
-    account: Account  ;
+    account: Account | null ;
 };
 
 const initialState: AuthState = {
     isAuthLoading: true,
-    account:{
-        fullName: 'phanumet',
-        
-    },
+    account: null,
 };
 
 export const authSlice = createSlice({
     name: "auth",
     initialState: initialState,
-    reducers: {}
+    reducers: {},
+    extraReducers(builder) {
+        builder.addCase(getCurrentAccountThunk.pending,(state,action) =>{
+            state.isAuthLoading = true;
+      });
+        builder.addCase(getCurrentAccountThunk.fulfilled,(state,action) =>{
+           
+            state.account = action.payload;
+            state.isAuthLoading = false;
+              
+        });
+    },
 });
 
 

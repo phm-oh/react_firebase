@@ -7,7 +7,7 @@ const DHome = () => {
   const { account } = useAppSelector(selectAuthState);
 
   return (
-    <div> ยินดีต้อนรับ { account?.fullName}</div>
+    <div> ยินดีต้อนรับ { account?.fulltName}</div>
   )
 }
 
