@@ -17,7 +17,7 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems} from './d-menu';
+import { MainListItems} from './d-menu';
 import { Outlet } from 'react-router-dom';
 import AccountMenu from './d-account-menu';
 
@@ -145,7 +145,7 @@ function DashboardContent() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+             <MainListItems/>
             <Divider sx={{ my: 1 }} />
             
           </List>
