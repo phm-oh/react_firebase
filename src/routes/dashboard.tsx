@@ -1,5 +1,5 @@
 import { RouteObject } from "react-router-dom";
-import Authguard from "../assets/authguard";
+import Authguard from "../guards/authguard";
 import DHome from "../pages/dashboard/d-home";
 import DLayout from "../pages/dashboard/d-layout";
 import DLeave from "../pages/dashboard/d-leave";
