@@ -8,6 +8,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
+import AddAlarmIcon from '@mui/icons-material/AddAlarm';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import { NavLink, useLocation } from 'react-router-dom';
 
 type MenuItem = {
   label: string;
@@ -17,10 +20,12 @@ type MenuItem = {
 
 export const MainListItems =() =>{
 
+   const location = useLocation();
+
    const menuItem: Array<MenuItem> = [
       { label: "หน้าหลัก", icon: <DashboardIcon/>, href: "/dashboard"},
-      { label: "ยื่นใบลา", icon: <PeopleIcon/>, href: "/dashboard"},
-      { label: "จัดการข้อมูลการลา", icon: <BarChartIcon/>, href: "/dashboard"},
+      { label: "ยื่นใบลา", icon: <ReceiptLongIcon/>, href: "/dashboard/leave"},
+      { label: "จัดการข้อมูลการลา", icon: <AddAlarmIcon/>, href: "/dashboard/manage"},
    ];
 
    return (
@@ -28,9 +33,9 @@ export const MainListItems =() =>{
 
    {
       menuItem.map((item) =>(
-        <ListItemButton key={item.label}>
+        <ListItemButton key={item.label}    component={NavLink} to={item.href} sx={{backgroundColor: location.pathname ===item.href?  'grey.300' : ''}}>
         <ListItemIcon>
-          <DashboardIcon />
+          {item.icon}
         </ListItemIcon>
         <ListItemText primary={item.label} />
       </ListItemButton>
